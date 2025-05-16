@@ -1,0 +1,98 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fundo com degradê roxo */
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #fdfdfd, #8a2be2);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 20px;
+    position: relative;
+}
+
+/* Título */
+h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Formulário */
+form {
+    background-color: rgba(204, 33, 33, 0.05);
+    padding: 20px 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 400px;
+    backdrop-filter: blur(10px);
+}
+
+/* Inputs e selects */
+form input,
+form select {
+    padding: 10px;
+    margin-bottom: 15px;
+    width: 100%;
+    border: none;
+    border-radius: 6px;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+/* Botões */
+form button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: #4b0082;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #eee;
+}
+
+/* Borboletas */
+.borboleta {
+    position: absolute;
+    width: 120px;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.borboleta.dir {
+    top: 10px;
+    right: 10px;
+}
+
+.borboleta.esq {
+    bottom: 50px;
+    left: 50px;
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+    form {
+        padding: 15px 20px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .borboleta {
+        width: 80px;
+    }
+}

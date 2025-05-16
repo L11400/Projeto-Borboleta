@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro / Login</title>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js"></script>
+  <style>
+    body {
+      background-color: #d8a7dc;
+      font-family: Arial, sans-serif;
+    }
+    .form-box {
+      background: #e5b2e7;
+      padding: 20px;
+      width: 300px;
+      margin: auto;
+      margin-top: 100px;
+      border-radius: 10px;
+    }
+    input, select {
+      width: 100%;
+      margin: 5px 0;
+      padding: 8px;
+    }
+    button {
+      width: 48%;
+      padding: 10px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-box">
+    <h2>Cadastro / Login</h2>
+    <div id="mensagemErro" style="color:red;"></div>
+    <input type="text" id="nome" placeholder="Nome Completo">
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="senha" placeholder="Senha">
+    <select id="idioma">
+      <option>Português</option>
+      <option>Inglês</option>
+    </select><br>
+    <label><input type="radio" name="tema" value="Claro" checked> Claro</label>
+    <label><input type="radio" name="tema" value="Escuro"> Escuro</label><br>
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="entrar()">Entrar</button>
+  </div>
+
+  <script>
+    // CONFIGURAÇÃO DO FIREBASE
+    const firebaseConfig = {
+      apiKey: "SUA_API_KEY",
+      authDomain: "SEU_PROJETO.firebaseapp.com",
+      projectId: "SEU_PROJETO_ID",
+      storageBucket: "SEU_PROJETO.appspot.com",
+      messagingSenderId: "SEU_SENDER_ID",
+      appId: "SEU_APP_ID"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    function cadastrar() {
+      const nome = document.getElementById("nome").value;
+      const email = document.getElementById("email").value;
+      const senha = document.getElementById("senha").value;
+      const idioma = document.getElementById("idioma").value;
+      const tema = document.querySelector('input[name="tema"]:checked').value;
+
+      // Criptografa a senha antes de salvar
+      const senhaHash = bcrypt.hashSync(senha, 10);
+
+      db.collection("usuarios").add({
+        nome,
+        email,
+        senha: senhaHash,
+        idioma,
+        tema
+      }).then(() => {
+        alert("Cadastro realizado com sucesso!");
+      }).catch((error) => {
+        alert("Erro ao cadastrar: " + error);
+      });
+    }
+
+    function entrar() {
+      const email = document.getElementById("email").value;
+      const senha = document.getElementById("senha").value;
+
+      db.collection("usuarios").where("email", "==", email)
+        .get()
+        .then((querySnapshot) => {
+          if (!querySnapshot.empty) {
+            let usuario = null;
+            querySnapshot.forEach((doc) => {
+              usuario = doc.data();
+            });
+            // Compara a senha digitada com o hash salvo
+            if (usuario && bcrypt.compareSync(senha, usuario.senha)) {
+              alert("Login bem-sucedido!");
+            } else {
+              document.getElementById("mensagemErro").innerText = "Senha incorreta";
+            }
+          } else {
+            document.getElementById("mensagemErro").innerText = "Usuário não encontrado";
+          }
+        });
+    }
+  </script>
+</body>
+</html>

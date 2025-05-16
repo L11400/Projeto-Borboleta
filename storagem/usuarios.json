@@ -1,0 +1,51 @@
+[
+    {
+        "nome": "thon",
+        "email": "t0kirmeier@gmail.com",
+        "senha": "$2y$10$3kWdCBmCcWvcZSWL\/jXmPunXtf1dvZda3VzkIY1zYIWD\/YhpcFcRG",
+        "idioma": "pt",
+        "tema": "escuro"
+    },
+    {
+        "nome": "Billy",
+        "email": "billy@gmail.com",
+        "senha": "$2y$10$ym3pgg8.2SgJl.fmY77ur.x5qEvwP66jkwS.0IJVkjrVnb0aRn1dC",
+        "idioma": "pt",
+        "tema": "claro"
+    },
+    {
+        "nome": "Analia",
+        "email": "analia@gmail.com",
+        "senha": "$2y$10$hskB1QT5opva474RsY7VjOgwhOPq3ZveEgIWxb7jLZYtGatVrlneC",
+        "idioma": "pt",
+        "tema": "escuro"
+    },
+    {
+        "nome": "luiz",
+        "email": "luiz@gmail.com",
+        "senha": "$2y$10$YtcWszxlA4izJXKpPmfPx.m5QpiJAb6mUKbYFb50RyiTLjCIB2HSW",
+        "idioma": "pt",
+        "tema": "claro"
+    },
+    {
+        "nome": "john",
+        "email": "john@gmail.com",
+        "senha": "$2y$10$DUxBElUQ13t501YFLBc.KuzrNwVg.E2Kk5qLyTN8X815bCdNJo22G",
+        "idioma": "pt",
+        "tema": "claro"
+    },
+    {
+        "nome": "teste",
+        "email": "teste123@gmai.com",
+        "senha": "$2y$10$Gpj\/musSBAXo3quuPIUCoenLRlAEOybUWznPq\/ZxGJtdZhiDDuNUa",
+        "idioma": "pt",
+        "tema": "escuro"
+    },
+    {
+        "nome": "luiz1",
+        "email": "luiz1@gmail.com",
+        "senha": "$2y$10$jBxEDGdGs1sNZw.iXvZbye0d\/AhzQM\/DwECPOwcjt1DMggNlgVe\/q",
+        "idioma": "pt",
+        "tema": "claro"
+    }
+]
